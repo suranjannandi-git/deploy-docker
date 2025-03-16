@@ -9,5 +9,3 @@ docker logs -f --tail 100 app-container
 docker exec -it app-container /bin/bash
 docker ps
 
-# SSH public Key
-suranjannandi-public-key
