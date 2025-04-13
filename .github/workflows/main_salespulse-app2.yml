@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://salespulseconreg.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_53f8a6ce59ef4aedaecb89692a9c76f0 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_ad0616ac616a46f8b1f2d306a1af7aad }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_49eaae8417794ecf911c5b9c915f7daf }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_7cd2ec57cc1d49f3b532a6c95948b808 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: salespulseconreg.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_53f8a6ce59ef4aedaecb89692a9c76f0 }}/deploy-docker:${{ github.sha }}
+        tags: salespulseconreg.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_49eaae8417794ecf911c5b9c915f7daf }}/deploy-docker:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'salespulse-app2'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_9d5d2282baad4919a76444136d43f69f }}
-        images: 'salespulseconreg.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_53f8a6ce59ef4aedaecb89692a9c76f0 }}/deploy-docker:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_ce97f75cd5c040509e80a9a87a8a8827 }}
+        images: 'salespulseconreg.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_49eaae8417794ecf911c5b9c915f7daf }}/deploy-docker:${{ github.sha }}'
